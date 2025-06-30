@@ -1104,8 +1104,12 @@
             <div class="button-container">
                 <button class="love-button" id="loveButton">לחצי להפתעה 💕</button>
                 <button class="love-button" id="letterButton" style="background: linear-gradient(45deg, #fdcb6e, #e17055);">מכתב אהבה 💌</button>
-                <button class="love-button" id="promiseButton" style="background: linear-gradient(45deg, #fd79a8, #e84393);">הבטחות אהבה 💍</button>
+                <button class="love-button" id="promiseButton" style="background: linear-gradient(45deg, #fd79a8, #e84393);">אני מבטיח 💍</button>
                 <button class="love-button" id="smileButton" style="background: linear-gradient(45deg, #ffeaa7, #fdcb6e); color: #2d3436; text-shadow: none;">החיוך שלך 😊</button>
+                <button class="love-button" id="reasonsButton" style="background: linear-gradient(45deg, #a29bfe, #6c5ce7);">למה אני אוהב אותך 💜</button>
+                <button class="love-button" id="kissButton" style="background: linear-gradient(45deg, #ff7675, #d63031);">נשיקה וירטואלית 💋</button>
+                <button class="love-button" id="wishButton" style="background: linear-gradient(45deg, #00b894, #00a085);">הביעי משאלה 🌟</button>
+
             </div>
         </div>
     </div>
@@ -1166,6 +1170,55 @@
         
         <button class="close-letter" id="closePromise" style="background: #e84393;">סגור הבטחות 💍</button>
     </div>
+    
+    <!-- Reasons Why I Love You Section -->
+    <div class="love-letter" id="reasonsSection" style="background: linear-gradient(145deg, #a29bfe, #6c5ce7, #5f3dc4);">
+        <h3 style="color: white;">למה אני אוהב אותך? 💜</h3>
+        <div id="reasonsList" style="color: white; text-align: right; max-height: 60vh; overflow-y: auto; padding: 10px;">
+            <p>🥰 את הכי חמודה שיש</p>
+            <p>🍯 האת התינוקי הכי מתוק שקיים</p>
+            <p>❤️ אני פשוט אוהב אותך</p>
+            <p>👸 תמיד ידעתי שאת האישה שלי בחיים האלה</p>
+            <p>💖 יש לך את הלב הכי מושלם שקיים על פני האדמה</p>
+            <p>👼 את הבן אדם הכי טוב שיש פשוט</p>
+            <p>😴 הדרך שבה את נרדמת ודוחפת אותי מהמיטה</p>
+            <p>☀️ את מאירה לי את הלב עם החיוך שלך</p>
+            <p>💝 את יודעת איך לחבק אותי בדיוק כשאני צריך</p>
+            <p>💫 את גורמת לי להיות אדם טוב יותר</p>
+            <p>🏠 איתך אני מרגיש בבית בכל מקום</p>
+            <p>🌈 את הצבע בעולם שלי</p>
+            <p>❤️ פשוט כי את... את</p>
+        </div>
+        <button class="close-letter" id="closeReasons" style="background: #5f3dc4;">סגור רשימה 💜</button>
+    </div>
+    
+    <!-- Virtual Kiss Section -->
+    <div class="love-letter" id="kissSection" style="background: linear-gradient(145deg, #ff7675, #d63031, #e17055);">
+        <h3 style="color: white;">נשיקה מיוחדת בשבילך 💋</h3>
+        <div style="text-align: center; margin: 30px 0;">
+            <div id="kissAnimation" style="font-size: 80px; margin: 20px 0; cursor: pointer; transition: all 0.3s ease;">💋</div>
+            <p style="color: white; font-size: 18px; margin: 20px 0;">לחצי על הנשיקה לחוויה מיוחדת...</p>
+        </div>
+        <p style="color: white; text-align: center;">כל נשיקה שלי היא דרך לומר לך כמה אני אוהב אותך...</p>
+        <p style="color: white; text-align: center;">כשאני מנשק אותך, הזמן עוצר, והעולם נעלם...</p>
+        <p style="color: white; text-align: center; font-style: italic; margin-top: 30px;">זו נשיקה מהלב שלי אליך 💕</p>
+        <button class="close-letter" id="closeKiss" style="background: #d63031;">סגור נשיקה 💋</button>
+    </div>
+    
+    <!-- Wish Making Section -->
+    <div class="love-letter" id="wishSection" style="background: linear-gradient(145deg, #00b894, #00a085, #0984e3);">
+        <h3 style="color: white;">הביעי משאלה 🌟</h3>
+        <div style="text-align: center; margin: 30px 0;">
+            <div id="wishStar" style="font-size: 100px; margin: 20px 0; cursor: pointer; animation: starTwinkle 2s ease-in-out infinite;">⭐</div>
+            <p style="color: white; font-size: 18px;">לחצי על הכוכב, עצמי עיניים ובקשי משאלה...</p>
+        </div>
+        <p style="color: white; text-align: center;">אני מאמין שכל המשאלות שלך יתגשמו...</p>
+        <p style="color: white; text-align: center;">כי את מגיעה רק לדברים הכי יפים בעולם...</p>
+        <div id="wishResult" style="display: none; color: white; text-align: center; margin: 20px 0; font-style: italic;"></div>
+        <button class="close-letter" id="closeWish" style="background: #0984e3;">סגור משאלה 🌟</button>
+    </div>
+    
+
     
     <script>
         // Typewriter effect
@@ -1244,6 +1297,24 @@
         const promiseSection = document.getElementById('promiseSection');
         const closePromise = document.getElementById('closePromise');
         
+        // Reasons section functionality
+        const reasonsButton = document.getElementById('reasonsButton');
+        const reasonsSection = document.getElementById('reasonsSection');
+        const closeReasons = document.getElementById('closeReasons');
+        
+        // Kiss section functionality
+        const kissButton = document.getElementById('kissButton');
+        const kissSection = document.getElementById('kissSection');
+        const closeKiss = document.getElementById('closeKiss');
+        const kissAnimation = document.getElementById('kissAnimation');
+        
+        // Wish section functionality
+        const wishButton = document.getElementById('wishButton');
+        const wishSection = document.getElementById('wishSection');
+        const closeWish = document.getElementById('closeWish');
+        const wishStar = document.getElementById('wishStar');
+        
+
 
         
         // Romantic Music Player functionality
@@ -1298,6 +1369,44 @@
         closePromise.addEventListener('click', function() {
             promiseSection.classList.remove('show');
         });
+        
+        reasonsButton.addEventListener('click', function() {
+            reasonsSection.classList.add('show');
+            createLoveRainbow();
+            animateReasonsList();
+        });
+        
+        closeReasons.addEventListener('click', function() {
+            reasonsSection.classList.remove('show');
+        });
+        
+        kissButton.addEventListener('click', function() {
+            kissSection.classList.add('show');
+            createKissEffect();
+        });
+        
+        closeKiss.addEventListener('click', function() {
+            kissSection.classList.remove('show');
+        });
+        
+        kissAnimation.addEventListener('click', function() {
+            createVirtualKiss();
+        });
+        
+        wishButton.addEventListener('click', function() {
+            wishSection.classList.add('show');
+            createWishingStars();
+        });
+        
+        closeWish.addEventListener('click', function() {
+            wishSection.classList.remove('show');
+        });
+        
+        wishStar.addEventListener('click', function() {
+            makeWish();
+        });
+        
+
         
         // Romantic Music Player Controls
         playPauseBtn.addEventListener('click', function() {
@@ -1436,6 +1545,182 @@
         
 
         
+        // New romantic functions for enhanced features
+        function createLoveRainbow() {
+            const colors = ['💜', '💙', '💚', '💛', '🧡', '❤️', '💕', '💖'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const colorHeart = document.createElement('div');
+                    colorHeart.textContent = colors[Math.floor(Math.random() * colors.length)];
+                    colorHeart.style.position = 'fixed';
+                    colorHeart.style.left = Math.random() * window.innerWidth + 'px';
+                    colorHeart.style.top = Math.random() * window.innerHeight + 'px';
+                    colorHeart.style.fontSize = Math.random() * 25 + 20 + 'px';
+                    colorHeart.style.pointerEvents = 'none';
+                    colorHeart.style.zIndex = '999';
+                    colorHeart.style.animation = 'rainbowFloat 4s ease-out forwards';
+                    document.body.appendChild(colorHeart);
+                    
+                    setTimeout(() => colorHeart.remove(), 4000);
+                }, i * 100);
+            }
+        }
+        
+        function animateReasonsList() {
+            const reasons = document.querySelectorAll('#reasonsList p');
+            reasons.forEach((reason, index) => {
+                reason.style.opacity = '0';
+                reason.style.transform = 'translateX(50px)';
+                setTimeout(() => {
+                    reason.style.transition = 'all 0.6s ease';
+                    reason.style.opacity = '1';
+                    reason.style.transform = 'translateX(0)';
+                }, index * 200);
+            });
+        }
+        
+        function createKissEffect() {
+            const kisses = ['💋', '😘', '💕', '❤️'];
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const kiss = document.createElement('div');
+                    kiss.textContent = kisses[Math.floor(Math.random() * kisses.length)];
+                    kiss.style.position = 'fixed';
+                    kiss.style.left = Math.random() * window.innerWidth + 'px';
+                    kiss.style.top = Math.random() * window.innerHeight + 'px';
+                    kiss.style.fontSize = Math.random() * 30 + 20 + 'px';
+                    kiss.style.pointerEvents = 'none';
+                    kiss.style.zIndex = '999';
+                    kiss.style.animation = 'kissFloat 3s ease-out forwards';
+                    document.body.appendChild(kiss);
+                    
+                    setTimeout(() => kiss.remove(), 3000);
+                }, i * 150);
+            }
+        }
+        
+        function createVirtualKiss() {
+            const kissAnim = document.getElementById('kissAnimation');
+            kissAnim.style.transform = 'scale(1.5)';
+            kissAnim.style.filter = 'drop-shadow(0 0 20px #ff69b4)';
+            
+            // Create explosion of kisses
+            for (let i = 0; i < 10; i++) {
+                const kiss = document.createElement('div');
+                kiss.textContent = '💋';
+                kiss.style.position = 'fixed';
+                kiss.style.left = '50%';
+                kiss.style.top = '50%';
+                kiss.style.fontSize = '30px';
+                kiss.style.pointerEvents = 'none';
+                kiss.style.zIndex = '9999';
+                
+                const angle = (i * 360 / 10) * (Math.PI / 180);
+                const distance = 150;
+                const endX = Math.cos(angle) * distance;
+                const endY = Math.sin(angle) * distance;
+                
+                kiss.style.animation = `kissExplosion 2s ease-out forwards`;
+                kiss.style.setProperty('--endX', endX + 'px');
+                kiss.style.setProperty('--endY', endY + 'px');
+                
+                document.body.appendChild(kiss);
+                setTimeout(() => kiss.remove(), 2000);
+            }
+            
+            setTimeout(() => {
+                kissAnim.style.transform = 'scale(1)';
+                kissAnim.style.filter = 'none';
+                
+                // Show special message
+                const kissMessage = document.createElement('div');
+                kissMessage.style.position = 'fixed';
+                kissMessage.style.top = '70%';
+                kissMessage.style.left = '50%';
+                kissMessage.style.transform = 'translate(-50%, -50%)';
+                kissMessage.style.color = 'white';
+                kissMessage.style.fontSize = '24px';
+                kissMessage.style.fontFamily = "'Dancing Script', cursive";
+                kissMessage.style.textAlign = 'center';
+                kissMessage.style.zIndex = '10000';
+                kissMessage.style.opacity = '0';
+                kissMessage.style.transition = 'opacity 1s ease';
+                kissMessage.innerHTML = '💕 קיבלת נשיקה מהלב שלי 💕';
+                
+                document.body.appendChild(kissMessage);
+                setTimeout(() => kissMessage.style.opacity = '1', 100);
+                setTimeout(() => {
+                    kissMessage.style.opacity = '0';
+                    setTimeout(() => kissMessage.remove(), 1000);
+                }, 3000);
+            }, 500);
+        }
+        
+        function createWishingStars() {
+            const stars = ['⭐', '🌟', '✨', '💫'];
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.textContent = stars[Math.floor(Math.random() * stars.length)];
+                    star.style.position = 'fixed';
+                    star.style.left = Math.random() * window.innerWidth + 'px';
+                    star.style.top = Math.random() * window.innerHeight + 'px';
+                    star.style.fontSize = Math.random() * 20 + 15 + 'px';
+                    star.style.pointerEvents = 'none';
+                    star.style.zIndex = '999';
+                    star.style.animation = 'starWish 4s ease-out forwards';
+                    document.body.appendChild(star);
+                    
+                    setTimeout(() => star.remove(), 4000);
+                }, i * 120);
+            }
+        }
+        
+        function makeWish() {
+            const wishStar = document.getElementById('wishStar');
+            const wishResult = document.getElementById('wishResult');
+            
+            wishStar.style.transform = 'scale(1.5) rotate(360deg)';
+            wishStar.style.filter = 'drop-shadow(0 0 30px gold)';
+            
+            const wishes = [
+                "✨ המשאלה שלך עפה אל הכוכבים... ואני מאמין שהיא תתגשם! 🌙",
+                "🌟 ראיתי את המשאלה שלך עוברת בשמיים... היא יפה כמוך! 💕",
+                "⭐ הכוכבים לוחשים לי שהמשאלה שלך הולכת להתגשם... 🎆",
+                "💫 המשאלה שלך זוהרת כמו הכוכב הכי בהיר! אני יודע שתתגשם! ✨",
+                "🌠 ראיתי מטאור נושא את המשאלה שלך... דרך הקסם! 💖"
+            ];
+            
+            setTimeout(() => {
+                wishResult.innerHTML = wishes[Math.floor(Math.random() * wishes.length)];
+                wishResult.style.display = 'block';
+                wishResult.style.animation = 'fadeInGlow 2s ease-out';
+                
+                // Create shooting star effect
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const shootingStar = document.createElement('div');
+                        shootingStar.textContent = '🌠';
+                        shootingStar.style.position = 'fixed';
+                        shootingStar.style.left = '0px';
+                        shootingStar.style.top = Math.random() * window.innerHeight + 'px';
+                        shootingStar.style.fontSize = '25px';
+                        shootingStar.style.pointerEvents = 'none';
+                        shootingStar.style.zIndex = '9999';
+                        shootingStar.style.animation = 'shootingStar 2s linear forwards';
+                        
+                        document.body.appendChild(shootingStar);
+                        setTimeout(() => shootingStar.remove(), 2000);
+                    }, i * 300);
+                }
+                
+                wishStar.style.transform = 'scale(1) rotate(0deg)';
+                wishStar.style.filter = 'none';
+            }, 1000);
+        }
+        
+
+
         // Create heart explosion
         function createHeartExplosion() {
             const colors = ['❤️', '💖', '💕', '💗', '💘', '💝'];
@@ -1475,10 +1760,11 @@
         // Create twinkling stars
         function createStars() {
             const stars = document.getElementById('stars');
+            const warmStars = ['⭐', '🌟', '💛', '🧡', '❤️', '💕', '🔥'];
             for (let i = 0; i < 100; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.textContent = '✨';
+                star.textContent = warmStars[Math.floor(Math.random() * warmStars.length)];
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 star.style.fontSize = Math.random() * 10 + 8 + 'px';
@@ -1605,7 +1891,7 @@
         
         // Create sunshine effect for smile
         function createSunshineEffect() {
-            const sunshine = ['☀️', '🌞', '✨', '🌟', '💛', '😊'];
+            const sunshine = ['☀️', '🌞', '⭐', '🌟', '💛', '😊', '🧡', '🔥'];
             for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
                     const sun = document.createElement('div');
@@ -1626,7 +1912,7 @@
         
         // Create joyful explosion for smile
         function createJoyfulExplosion() {
-            const joyEmojis = ['😊', '😍', '🥰', '😘', '💕', '💖', '✨', '🌈'];
+            const joyEmojis = ['😊', '😍', '🥰', '😘', '💕', '💖', '✨', '🌟', '⭐', '🔥', '❤️', '🧡', '💛'];
             for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
                     const joy = document.createElement('div');
@@ -1647,7 +1933,7 @@
         
         // Create beautiful ring effect for promises
         function createRingEffect() {
-            const rings = ['💍', '💎', '✨', '👑'];
+            const rings = ['💍', '💎', '⭐', '👑', '🌟', '💛', '🧡'];
             for (let i = 0; i < 15; i++) {
                 setTimeout(() => {
                     const ring = document.createElement('div');
@@ -1873,6 +2159,219 @@
             }, 12000);
         }, 20000); // Show after 20 seconds
         
+        // Love countdown surprise
+        setTimeout(() => {
+            const countdownDiv = document.createElement('div');
+            countdownDiv.style.position = 'fixed';
+            countdownDiv.style.top = '50%';
+            countdownDiv.style.left = '50%';
+            countdownDiv.style.transform = 'translate(-50%, -50%) scale(0)';
+            countdownDiv.style.background = 'linear-gradient(135deg, rgba(255, 20, 147, 0.95), rgba(255, 105, 180, 0.95))';
+            countdownDiv.style.backdropFilter = 'blur(15px)';
+            countdownDiv.style.padding = '40px';
+            countdownDiv.style.borderRadius = '25px';
+            countdownDiv.style.color = 'white';
+            countdownDiv.style.fontFamily = "'Dancing Script', cursive";
+            countdownDiv.style.fontSize = '32px';
+            countdownDiv.style.textAlign = 'center';
+            countdownDiv.style.zIndex = '10002';
+            countdownDiv.style.border = '3px solid rgba(255, 255, 255, 0.4)';
+            countdownDiv.style.boxShadow = '0 25px 50px rgba(255, 20, 147, 0.5)';
+            countdownDiv.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            countdownDiv.innerHTML = `
+                <div style="font-size: 28px; margin-bottom: 20px;">💖 ספירה לאחור לרגע מיוחד 💖</div>
+                <div id="loveCountdown" style="font-size: 48px; margin: 20px 0; font-weight: bold;">3</div>
+                <div style="font-size: 20px; opacity: 0.9;">משהו מיוחד מחכה לך...</div>
+            `;
+            
+            document.body.appendChild(countdownDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                countdownDiv.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 100);
+            
+            // Countdown animation
+            const countdownElement = document.getElementById('loveCountdown');
+            let count = 3;
+            
+            const countdownInterval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownElement.textContent = count;
+                    countdownElement.style.transform = 'scale(1.5)';
+                    setTimeout(() => countdownElement.style.transform = 'scale(1)', 200);
+                    
+                    // Create number explosion
+                    for (let i = 0; i < 8; i++) {
+                        const numberHeart = document.createElement('div');
+                        numberHeart.textContent = '💕';
+                        numberHeart.style.position = 'fixed';
+                        numberHeart.style.left = '50%';
+                        numberHeart.style.top = '50%';
+                        numberHeart.style.fontSize = '20px';
+                        numberHeart.style.pointerEvents = 'none';
+                        numberHeart.style.zIndex = '9999';
+                        
+                        const angle = (i * 360 / 8) * (Math.PI / 180);
+                        const distance = 80;
+                        const endX = Math.cos(angle) * distance;
+                        const endY = Math.sin(angle) * distance;
+                        
+                        numberHeart.style.animation = `kissExplosion 1s ease-out forwards`;
+                        numberHeart.style.setProperty('--endX', endX + 'px');
+                        numberHeart.style.setProperty('--endY', endY + 'px');
+                        
+                        document.body.appendChild(numberHeart);
+                        setTimeout(() => numberHeart.remove(), 1000);
+                    }
+                } else {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerHTML = '💝<br><span style="font-size: 24px;">אני אוהב אותך!</span>';
+                    
+                    // Massive love explosion
+                    setTimeout(() => {
+                        createMassiveHeartExplosion();
+                        createUltimateRomanticExplosion();
+                        
+                        // Replace countdown with final message
+                        setTimeout(() => {
+                            countdownDiv.innerHTML = `
+                                <div style="font-size: 36px; margin-bottom: 15px;">🌟 הפתעה! 🌟</div>
+                                <div style="font-size: 24px; line-height: 1.6;">
+                                    את הדבר הכי יפה שקרה לי בחיים!<br>
+                                    כל שנייה איתך היא מתנה 💕<br><br>
+                                    <span style="font-size: 20px; opacity: 0.9;">אני אוהב אותך יותר מכל הכוכבים בשמיים ✨</span>
+                                </div>
+                                <div style="margin-top: 20px; cursor: pointer; font-size: 16px; opacity: 0.8;">לחצי כדי להמשיך 💖</div>
+                            `;
+                            
+                            countdownDiv.addEventListener('click', () => {
+                                countdownDiv.style.transform = 'translate(-50%, -50%) scale(0)';
+                                setTimeout(() => countdownDiv.remove(), 500);
+                            });
+                            
+                            // Auto close after 15 seconds
+                            setTimeout(() => {
+                                if (countdownDiv.parentNode) {
+                                    countdownDiv.style.transform = 'translate(-50%, -50%) scale(0)';
+                                    setTimeout(() => countdownDiv.remove(), 500);
+                                }
+                            }, 15000);
+                        }, 2000);
+                    }, 1000);
+                }
+            }, 1500);
+        }, 45000); // Show after 45 seconds
+        
+        // Ultimate romantic explosion
+        function createUltimateRomanticExplosion() {
+            const romanticEmojis = ['💕', '💖', '💗', '💘', '💝', '💞', '💓', '💟', '♥️', '❤️', '🧡', '💛', '❣️', '❤️‍🔥', '❤️‍🩹', '💋', '😍', '🥰', '😘', '🌹', '🌺', '🌸', '💐', '🌻', '🌷', '⭐', '🌟', '✨', '💫', '☀️', '🔥', '💥', '🎇', '🎆', '🌠'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.textContent = romanticEmojis[Math.floor(Math.random() * romanticEmojis.length)];
+                    emoji.style.position = 'fixed';
+                    emoji.style.left = Math.random() * window.innerWidth + 'px';
+                    emoji.style.top = Math.random() * window.innerHeight + 'px';
+                    emoji.style.fontSize = Math.random() * 40 + 15 + 'px';
+                    emoji.style.pointerEvents = 'none';
+                    emoji.style.zIndex = '9998';
+                    emoji.style.animation = 'ultimateFloat 4s ease-out forwards';
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => emoji.remove(), 4000);
+                }, i * 30);
+            }
+        }
+        
+        // Special "I Love You" in different languages surprise
+        const loveLanguages = [
+            { lang: 'עברית', text: 'אני אוהב אותך', flag: '🇮🇱' },
+            { lang: 'English', text: 'I love you', flag: '🇺🇸' },
+            { lang: 'Français', text: 'Je t\'aime', flag: '🇫🇷' },
+            { lang: 'Español', text: 'Te amo', flag: '🇪🇸' },
+            { lang: 'Italiano', text: 'Ti amo', flag: '🇮🇹' },
+            { lang: '日本語', text: '愛してる', flag: '🇯🇵' },
+            { lang: '한국어', text: '사랑해', flag: '🇰🇷' },
+            { lang: 'Deutsch', text: 'Ich liebe dich', flag: '🇩🇪' },
+            { lang: 'Русский', text: 'Я люблю тебя', flag: '🇷🇺' },
+            { lang: 'العربية', text: 'أحبك', flag: '🇸🇦' },
+            { lang: 'हिन्दी', text: 'मैं तुमसे प्यार करता हूँ', flag: '🇮🇳' },
+            { lang: '中文', text: '我爱你', flag: '🇨🇳' }
+        ];
+        
+        function showRandomLoveLanguage() {
+            if (Math.random() > 0.7) { // 30% chance
+                const randomLove = loveLanguages[Math.floor(Math.random() * loveLanguages.length)];
+                const loveDiv = document.createElement('div');
+                loveDiv.style.position = 'fixed';
+                loveDiv.style.top = Math.random() * 30 + 10 + '%';
+                loveDiv.style.left = Math.random() * 60 + 20 + '%';
+                loveDiv.style.background = 'linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.9))';
+                loveDiv.style.backdropFilter = 'blur(10px)';
+                loveDiv.style.padding = '20px 25px';
+                loveDiv.style.borderRadius = '20px';
+                loveDiv.style.color = 'white';
+                loveDiv.style.fontFamily = "'Poppins', sans-serif";
+                loveDiv.style.textAlign = 'center';
+                loveDiv.style.zIndex = '1000';
+                loveDiv.style.border = '2px solid rgba(255, 255, 255, 0.3)';
+                loveDiv.style.boxShadow = '0 15px 35px rgba(255, 105, 180, 0.4)';
+                loveDiv.style.transform = 'scale(0)';
+                loveDiv.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                loveDiv.style.cursor = 'pointer';
+                loveDiv.innerHTML = `
+                    <div style="font-size: 24px; margin-bottom: 8px;">${randomLove.flag}</div>
+                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">${randomLove.text}</div>
+                    <div style="font-size: 14px; opacity: 0.8;">${randomLove.lang}</div>
+                `;
+                
+                document.body.appendChild(loveDiv);
+                
+                setTimeout(() => loveDiv.style.transform = 'scale(1)', 100);
+                
+                loveDiv.addEventListener('click', () => {
+                    loveDiv.style.transform = 'scale(0)';
+                    createMiniHeartExplosion();
+                    setTimeout(() => loveDiv.remove(), 300);
+                });
+                
+                setTimeout(() => {
+                    if (loveDiv.parentNode) {
+                        loveDiv.style.transform = 'scale(0)';
+                        setTimeout(() => loveDiv.remove(), 300);
+                    }
+                }, 6000);
+            }
+        }
+        
+        // Show random love languages every 15-25 seconds
+        setInterval(showRandomLoveLanguage, Math.random() * 10000 + 15000);
+        
+        // Enhanced magic sparkles on heart hover
+        mainHeart.addEventListener('mouseenter', function() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.textContent = '✨';
+                    sparkle.style.position = 'absolute';
+                    sparkle.style.left = Math.random() * 100 + 'px';
+                    sparkle.style.top = Math.random() * 100 + 'px';
+                    sparkle.style.fontSize = Math.random() * 15 + 10 + 'px';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '999';
+                    sparkle.style.animation = 'floatUp 2s ease-out forwards';
+                    this.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) sparkle.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        });
+
         // Initialize background animations
         createParticles();
         createStars();
@@ -1886,7 +2385,7 @@
             const now = Date.now();
             if (Math.random() > 0.98 && (now - lastSparkleTime) > sparkleThrottle) {
                 lastSparkleTime = now;
-                const effects = ['✨', '💫', '⭐', '🌟', '💖'];
+                const effects = ['✨', '⭐', '🌟', '💖', '❤️', '🧡', '💛', '🔥'];
                 const sparkle = document.createElement('div');
                 sparkle.textContent = effects[Math.floor(Math.random() * effects.length)];
                 sparkle.style.position = 'fixed';
@@ -1931,6 +2430,140 @@
                 to {
                     transform: scale(4);
                     opacity: 0;
+                }
+            }
+            
+            @keyframes starTwinkle {
+                0%, 100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+                50% { transform: scale(1.2) rotate(180deg); filter: brightness(1.5) drop-shadow(0 0 10px gold); }
+            }
+            
+            @keyframes rainbowFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(0.5) rotate(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateY(-80px) scale(1.2) rotate(180deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-150px) scale(0.3) rotate(360deg);
+                }
+            }
+            
+            @keyframes kissFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(0.5) rotate(0deg);
+                    filter: hue-rotate(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateY(-60px) scale(1.3) rotate(180deg);
+                    filter: hue-rotate(180deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-120px) scale(0.5) rotate(360deg);
+                    filter: hue-rotate(360deg);
+                }
+            }
+            
+            @keyframes kissExplosion {
+                0% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                }
+                70% {
+                    opacity: 0.8;
+                    transform: translate(calc(-50% + var(--endX, 0px)), calc(-50% + var(--endY, 0px))) scale(1.2) rotate(270deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(calc(-50% + var(--endX, 0px)), calc(-50% + var(--endY, 0px))) scale(0.3) rotate(360deg);
+                }
+            }
+            
+            @keyframes starWish {
+                0% {
+                    opacity: 0.3;
+                    transform: scale(0.3) rotate(0deg);
+                    filter: brightness(0.8);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.5) rotate(180deg);
+                    filter: brightness(2) drop-shadow(0 0 15px gold);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0.5) rotate(360deg);
+                    filter: brightness(0.5);
+                }
+            }
+            
+            @keyframes fadeInGlow {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.8);
+                    filter: brightness(0.5);
+                }
+                50% {
+                    opacity: 0.8;
+                    transform: scale(1.1);
+                    filter: brightness(1.3) drop-shadow(0 0 10px gold);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                    filter: brightness(1);
+                }
+            }
+            
+            @keyframes shootingStar {
+                0% {
+                    opacity: 0;
+                    transform: translateX(0) translateY(0) rotate(-45deg);
+                }
+                20% {
+                    opacity: 1;
+                    transform: translateX(100px) translateY(-50px) rotate(-45deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateX(100vw) translateY(-200px) rotate(-45deg);
+                }
+            }
+            
+
+            
+            @keyframes ultimateFloat {
+                0% {
+                    opacity: 1;
+                    transform: scale(0.3) rotate(0deg) translateY(0);
+                    filter: brightness(0.8) hue-rotate(0deg);
+                }
+                25% {
+                    opacity: 1;
+                    transform: scale(1.4) rotate(90deg) translateY(-30px);
+                    filter: brightness(1.5) hue-rotate(90deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.1) rotate(180deg) translateY(-80px);
+                    filter: brightness(1.8) hue-rotate(180deg);
+                }
+                75% {
+                    opacity: 0.8;
+                    transform: scale(1.3) rotate(270deg) translateY(-120px);
+                    filter: brightness(1.3) hue-rotate(270deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0.2) rotate(360deg) translateY(-200px);
+                    filter: brightness(0.5) hue-rotate(360deg);
                 }
             }
         `;
