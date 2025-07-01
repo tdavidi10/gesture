@@ -1084,7 +1084,7 @@
     </div>
     
             <!-- Hidden Audio Element with Archive.org hosting -->
-        <audio id="romanticAudio" preload="none" crossorigin="anonymous">
+        <audio id="romanticAudio" preload="auto" autoplay muted crossorigin="anonymous">
             <source src="https://archive.org/download/20250623_20250623_1949/תמר%20יהלומי%20%26%20יונתן%20קלימי%20-%20מזל.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
@@ -1482,6 +1482,15 @@
             this.volume = 0.7;
             progressBar.style.width = '0%';
             currentTimeDisplay.textContent = '0:00';
+            
+            // Check if autoplay started the music
+            if (!this.paused && !isPlaying) {
+                playPauseBtn.textContent = '⏸️';
+                musicVisualizer.style.display = 'flex';
+                startMusicEffects();
+                isPlaying = true;
+                console.log('Music autoplay detected! 🎵');
+            }
         });
         
         romanticAudio.addEventListener('error', function(e) {
@@ -2376,6 +2385,71 @@
         createParticles();
         createStars();
         createRosePetals();
+        
+        // Autoplay music when page loads
+        function attemptAutoplay() {
+            if (!isPlaying) {
+                // First try: start muted autoplay, then unmute
+                romanticAudio.muted = true;
+                const playPromise = romanticAudio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Successfully started playing muted, now try to unmute
+                        setTimeout(() => {
+                            romanticAudio.muted = false;
+                            romanticAudio.volume = 0.7;
+                            playPauseBtn.textContent = '⏸️';
+                            musicVisualizer.style.display = 'flex';
+                            startMusicEffects();
+                            isPlaying = true;
+                            console.log('Music started automatically! 🎵');
+                        }, 500);
+                    }).catch(error => {
+                        console.log('Autoplay blocked, will try on first user interaction');
+                        setupUserInteractionAutoplay();
+                    });
+                } else {
+                    setupUserInteractionAutoplay();
+                }
+            }
+        }
+        
+        // Setup autoplay on first user interaction
+        function setupUserInteractionAutoplay() {
+            const startOnInteraction = () => {
+                if (!isPlaying) {
+                    romanticAudio.muted = false;
+                    romanticAudio.volume = 0.7;
+                    const playPromise = romanticAudio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            playPauseBtn.textContent = '⏸️';
+                            musicVisualizer.style.display = 'flex';
+                            startMusicEffects();
+                            isPlaying = true;
+                            console.log('Music started on user interaction! 🎵');
+                            
+                            // Remove event listeners since we only need this once
+                            document.removeEventListener('click', startOnInteraction);
+                            document.removeEventListener('mousemove', startOnInteraction);
+                            document.removeEventListener('touchstart', startOnInteraction);
+                        }).catch(error => {
+                            console.log('Still blocked, user needs to click play button');
+                        });
+                    }
+                }
+            };
+            
+            // Add event listeners for first user interaction
+            document.addEventListener('click', startOnInteraction, { once: true });
+            document.addEventListener('mousemove', startOnInteraction, { once: true });
+            document.addEventListener('touchstart', startOnInteraction, { once: true });
+        }
+        
+        // Try to start music after a short delay to ensure everything is loaded
+        setTimeout(attemptAutoplay, 2000);
         
         // Enhanced interactive magic
         let lastSparkleTime = 0;
