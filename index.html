@@ -1644,16 +1644,24 @@
                 // Show special message
                 const kissMessage = document.createElement('div');
                 kissMessage.style.position = 'fixed';
-                kissMessage.style.top = '70%';
+                kissMessage.style.top = '50%';
                 kissMessage.style.left = '50%';
                 kissMessage.style.transform = 'translate(-50%, -50%)';
                 kissMessage.style.color = 'white';
                 kissMessage.style.fontSize = '24px';
                 kissMessage.style.fontFamily = "'Dancing Script', cursive";
                 kissMessage.style.textAlign = 'center';
-                kissMessage.style.zIndex = '10000';
+                kissMessage.style.zIndex = '10001';
                 kissMessage.style.opacity = '0';
                 kissMessage.style.transition = 'opacity 1s ease';
+                kissMessage.style.background = 'linear-gradient(145deg, rgba(255, 118, 117, 0.95), rgba(214, 48, 49, 0.95), rgba(225, 112, 85, 0.95))';
+                kissMessage.style.backdropFilter = 'blur(15px)';
+                kissMessage.style.padding = '20px 30px';
+                kissMessage.style.borderRadius = '20px';
+                kissMessage.style.border = '2px solid rgba(255, 255, 255, 0.3)';
+                kissMessage.style.boxShadow = '0 15px 35px rgba(214, 48, 49, 0.5)';
+                kissMessage.style.maxWidth = '90vw';
+                kissMessage.style.wordWrap = 'break-word';
                 kissMessage.innerHTML = '💕 קיבלת נשיקה מהלב שלי 💕';
                 
                 document.body.appendChild(kissMessage);
