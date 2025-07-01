@@ -2303,69 +2303,7 @@
             }
         }
         
-        // Special "I Love You" in different languages surprise
-        const loveLanguages = [
-            { lang: 'עברית', text: 'אני אוהב אותך', flag: '🇮🇱' },
-            { lang: 'English', text: 'I love you', flag: '🇺🇸' },
-            { lang: 'Français', text: 'Je t\'aime', flag: '🇫🇷' },
-            { lang: 'Español', text: 'Te amo', flag: '🇪🇸' },
-            { lang: 'Italiano', text: 'Ti amo', flag: '🇮🇹' },
-            { lang: '日本語', text: '愛してる', flag: '🇯🇵' },
-            { lang: '한국어', text: '사랑해', flag: '🇰🇷' },
-            { lang: 'Deutsch', text: 'Ich liebe dich', flag: '🇩🇪' },
-            { lang: 'Русский', text: 'Я люблю тебя', flag: '🇷🇺' },
-            { lang: 'العربية', text: 'أحبك', flag: '🇸🇦' },
-            { lang: 'हिन्दी', text: 'मैं तुमसे प्यार करता हूँ', flag: '🇮🇳' },
-            { lang: '中文', text: '我爱你', flag: '🇨🇳' }
-        ];
-        
-        function showRandomLoveLanguage() {
-            if (Math.random() > 0.7) { // 30% chance
-                const randomLove = loveLanguages[Math.floor(Math.random() * loveLanguages.length)];
-                const loveDiv = document.createElement('div');
-                loveDiv.style.position = 'fixed';
-                loveDiv.style.top = Math.random() * 30 + 10 + '%';
-                loveDiv.style.left = Math.random() * 60 + 20 + '%';
-                loveDiv.style.background = 'linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.9))';
-                loveDiv.style.backdropFilter = 'blur(10px)';
-                loveDiv.style.padding = '20px 25px';
-                loveDiv.style.borderRadius = '20px';
-                loveDiv.style.color = 'white';
-                loveDiv.style.fontFamily = "'Poppins', sans-serif";
-                loveDiv.style.textAlign = 'center';
-                loveDiv.style.zIndex = '1000';
-                loveDiv.style.border = '2px solid rgba(255, 255, 255, 0.3)';
-                loveDiv.style.boxShadow = '0 15px 35px rgba(255, 105, 180, 0.4)';
-                loveDiv.style.transform = 'scale(0)';
-                loveDiv.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                loveDiv.style.cursor = 'pointer';
-                loveDiv.innerHTML = `
-                    <div style="font-size: 24px; margin-bottom: 8px;">${randomLove.flag}</div>
-                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">${randomLove.text}</div>
-                    <div style="font-size: 14px; opacity: 0.8;">${randomLove.lang}</div>
-                `;
-                
-                document.body.appendChild(loveDiv);
-                
-                setTimeout(() => loveDiv.style.transform = 'scale(1)', 100);
-                
-                loveDiv.addEventListener('click', () => {
-                    loveDiv.style.transform = 'scale(0)';
-                    createMiniHeartExplosion();
-                    setTimeout(() => loveDiv.remove(), 300);
-                });
-                
-                setTimeout(() => {
-                    if (loveDiv.parentNode) {
-                        loveDiv.style.transform = 'scale(0)';
-                        setTimeout(() => loveDiv.remove(), 300);
-                    }
-                }, 6000);
-            }
-        }
-        
-        // Show random love languages every 15-25 seconds
-        setInterval(showRandomLoveLanguage, Math.random() * 10000 + 15000);
+
         
         // Enhanced magic sparkles on heart hover
         mainHeart.addEventListener('mouseenter', function() {
